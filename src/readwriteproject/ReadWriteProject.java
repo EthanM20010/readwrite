@@ -6,6 +6,7 @@
 package readwriteproject;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.EOFException;
 import java.io.File;
 import java.io.FileReader;
@@ -14,6 +15,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import javafx.scene.shape.Line;
 
 /**
  *
@@ -25,26 +27,27 @@ public class ReadWriteProject {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-       
+      Path p = Paths.get("/Users/emendez/Desktop");
+      Path p2 = Paths.get("BoyNames.txt");
+      Path p3 = p.resolve(p2);
     ArrayList Al = new ArrayList();
   
-    try(BufferedReader br = new BufferedReader(new FileReader("/Users/emendez/Desktop/BoyNames.txt"))){
-       StringBuilder fileContents = new StringBuilder();
+    try(BufferedReader br = new BufferedReader(new FileReader("/Users/emendez/Desktop/BoyNames.txt"))) {
+       
        String Line = br.readLine();
        
        while(Line != null){
-           fileContents.append(Line);
-           fileContents.append(System.lineSeparator());
+           
            Line = br.readLine();
+           Al.add(Line + "\n");
        }
-       String fileComplete = fileContents.toString();
-        System.out.println(fileComplete);
+       
     }   
     catch(IOException ioe){
         System.out.println("Not Readable"); 
         
     }
-   
+        
    }
     
 }
