@@ -10,6 +10,7 @@ import java.io.BufferedWriter;
 import java.io.EOFException;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -32,22 +33,27 @@ public class ReadWriteProject {
       Path p3 = p.resolve(p2);
     ArrayList Al = new ArrayList();
   
-    try(BufferedReader br = new BufferedReader(new FileReader("/Users/emendez/Desktop/BoyNames.txt"))) {
-       
+    try(BufferedReader br = new BufferedReader(new FileReader("/Users/emendez/Desktop/BoyNames.txt"))){ 
+     // BufferedWriter bw = new BufferedWriter(new FileWriter("/17-18/Users/emendez/Dropbox/"));
+      StringBuilder fileContents = new StringBuilder();
        String Line = br.readLine();
        
+       //bw.close();
        while(Line != null){
-           
+           fileContents.append(Line);
+           fileContents.append(System.lineSeparator());
            Line = br.readLine();
-           Al.add(Line + "\n");
+           
+           Al.add(Line );//+ "\n");
        }
-       
+       String fileComplete = fileContents.toString();
+        System.out.println(fileComplete);
     }   
     catch(IOException ioe){
         System.out.println("Not Readable"); 
         
     }
-        
+           
    }
     
 }
