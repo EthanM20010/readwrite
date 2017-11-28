@@ -16,6 +16,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Collections;
 import javafx.scene.shape.Line;
 
 /**
@@ -34,20 +35,24 @@ public class ReadWriteProject {
     ArrayList Al = new ArrayList();
   
     try(BufferedReader br = new BufferedReader(new FileReader("/Users/emendez/Desktop/BoyNames.txt"))){ 
-     // BufferedWriter bw = new BufferedWriter(new FileWriter("/17-18/Users/emendez/Dropbox/"));
+     BufferedWriter bw = new BufferedWriter(new FileWriter("/Users/emendez/Dropbox/ReadWriteProject/src/BoyList.txt"));
       StringBuilder fileContents = new StringBuilder();
        String Line = br.readLine();
        
-       //bw.close();
+       
        while(Line != null){
+           Al.add(Line);
            fileContents.append(Line);
            fileContents.append(System.lineSeparator());
            Line = br.readLine();
            
-           Al.add(Line );//+ "\n");
+           ;
        }
-       String fileComplete = fileContents.toString();
-        System.out.println(fileComplete);
+      Collections.sort(Al);
+       //String fileComplete = fileContents.toString();
+       System.out.println(Al);
+       bw.write(Al.toString());
+      bw.close();
     }   
     catch(IOException ioe){
         System.out.println("Not Readable"); 
